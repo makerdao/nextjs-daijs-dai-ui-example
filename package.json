@@ -7,6 +7,7 @@
     "dev-ipfs": "IPFS=true next dev",
     "build": "next build",
     "build-ipfs": "IPFS=true next build",
+    "export": "next export",
     "start": "next start",
     "test": "yarn testchain --ci jest --runInBand",
     "testchain": "./node_modules/@makerdao/testchain/scripts/launch -s default --fast"
