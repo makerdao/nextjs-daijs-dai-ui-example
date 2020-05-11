@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import useMaker from '../hooks/useMaker';
 import { useEffect } from 'react';
+import IntroMDX from '../text/intro.mdx';
 
 const Index = () => {
   const { maker, fetchTokenBalance, web3Connected } = useMaker();
@@ -31,14 +32,8 @@ const Index = () => {
     <Container>
       <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
         <Heading>Dai Boilerplate</Heading>
-        <Card sx={{ my: 2 }}>
-          <Heading sx={{ pb: 2 }} variant="h3">
-            A minimal boilerplate for building dapps within the MakerDAO
-            ecosystem.
-          </Heading>
-          <Flex>
-            <Text>Connect your wallet to get started.</Text>
-          </Flex>
+        <Card sx={{ py: 0, px: 3, my: 2 }}>
+          <IntroMDX></IntroMDX>
         </Card>
         {web3Connected && (
           <Grid sx={{ my: 3 }}>
