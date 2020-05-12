@@ -3,7 +3,7 @@ import { instantiateMaker } from '../maker';
 
 export const MakerObjectContext = createContext();
 
-function MakerProvider({ children, network }) {
+function MakerProvider({ children, network = 'mainnet' }) {
   const [maker, setMaker] = useState(null);
   const [web3Connected, setWeb3Connected] = useState(null);
 
@@ -28,12 +28,12 @@ function MakerProvider({ children, network }) {
   };
 
   useEffect(() => {
-    instantiateMaker(network).then((maker) => {
+    instantiateMaker(network).then(maker => {
       setMaker(maker);
     });
   }, [network]);
 
-  const fetchTokenBalance = (token) => {
+  const fetchTokenBalance = token => {
     return maker.service('token').getToken(token).balance();
   };
 

@@ -1,10 +1,12 @@
 /** @jsx jsx */
 import { Container, jsx, NavLink, Flex } from 'theme-ui';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Icon } from '@makerdao/dai-ui-icons';
 import AccountConnect from './AccountConnect';
 
 const Header = () => {
+  const { query } = useRouter();
   return (
     <Container>
       <Flex
@@ -20,11 +22,11 @@ const Header = () => {
             mr: [null, 0],
           }}
         >
-          <Link href="/">
-            <NavLink href="/">Home</NavLink>
+          <Link href={{ pathname: '/', query }} passHref>
+            <NavLink>Home</NavLink>
           </Link>
-          <Link href="/about">
-            <NavLink href="/about">About</NavLink>
+          <Link href={{ pathname: '/about', query }} passHref>
+            <NavLink>About</NavLink>
           </Link>
           <Flex sx={{ ml: 2 }}>
             <AccountConnect />

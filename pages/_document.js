@@ -2,7 +2,7 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { InitializeColorMode } from 'theme-ui';
 
-const scriptTxt = `
+const ipfsScript = `
 (function () {
   const { pathname } = window.location
   const ipfsMatch = /.*\\/Qm\\w{44}\\//.exec(pathname)
@@ -24,7 +24,7 @@ class MyDocument extends Document {
       <Html>
         <Head>
           {process.env.IPFS && (
-            <script dangerouslySetInnerHTML={{ __html: scriptTxt }} />
+            <script dangerouslySetInnerHTML={{ __html: ipfsScript }} />
           )}
         </Head>
         <body>
