@@ -9,6 +9,7 @@ import Footer from '../components/Footer';
 const MyApp = ({ Component, pageProps }) => {
   const { query } = useRouter();
   const [network, setNetwork] = useState();
+  const queryParams = network ? { network } : {};
 
   useEffect(() => {
     setNetwork(query.network);
@@ -17,7 +18,7 @@ const MyApp = ({ Component, pageProps }) => {
   return (
     <ThemeProvider theme={theme}>
       <MakerProvider network={network}>
-        <Header />
+        <Header query={queryParams} />
         <Component {...pageProps} />
         <Footer />
       </MakerProvider>

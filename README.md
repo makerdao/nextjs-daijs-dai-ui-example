@@ -14,7 +14,7 @@ This app uses theme-ui with the dai-ui Maker theme. For more information [see he
 
 ## Dai.js
 
-This app includes the Dai.js SDK along with a minimal Context Provider to connect web3 browser accounts & fetch some data. By default the app will connect to mainnet. To connect the kovan network pass the query string `network=kovan` in the URL.
+This app includes the Dai.js SDK along with a minimal Context Provider to connect web3 browser accounts & fetch some data. By default the app will connect to mainnet. To connect to the kovan network pass the query string `network=kovan` in the URL.
 
 ## MDX Support
 

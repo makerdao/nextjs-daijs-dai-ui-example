@@ -12,15 +12,16 @@ function MakerProvider({ children, network = 'mainnet' }) {
       if (maker) {
         await maker.authenticate();
         const { networkName } = maker.service('web3');
-        if (network === 'mainnet' && networkName !== 'mainnet') {
+        if (network !== networkName) {
           return window.alert(
-            "Please connect your wallet to mainnet to use this app. Or, if you'd like to try this app on the Kovan test network, add ?network=kovan to the end of the URL."
+            `Wrong network. Your provider is connected to ${networkName}`
           );
         }
 
         setWeb3Connected(true);
       }
     } catch (err) {
+      console.error(err);
       window.alert(
         'There was a problem connecting to your wallet, please reload and try again.'
       );
@@ -28,9 +29,11 @@ function MakerProvider({ children, network = 'mainnet' }) {
   };
 
   useEffect(() => {
-    instantiateMaker(network).then(maker => {
-      setMaker(maker);
-    });
+    const loadMaker = async () => {
+      const _maker = await instantiateMaker(network);
+      setMaker(_maker);
+    };
+    loadMaker();
   }, [network]);
 
   const fetchTokenBalance = token => {

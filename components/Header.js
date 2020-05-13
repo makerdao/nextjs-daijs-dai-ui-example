@@ -1,12 +1,10 @@
 /** @jsx jsx */
 import { Container, jsx, NavLink, Flex } from 'theme-ui';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { Icon } from '@makerdao/dai-ui-icons';
 import AccountConnect from './AccountConnect';
 
-const Header = () => {
-  const { query } = useRouter();
+const Header = ({ query }) => {
   return (
     <Container>
       <Flex
