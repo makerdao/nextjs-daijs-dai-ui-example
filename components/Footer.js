@@ -33,16 +33,6 @@ const Footer = () => {
             Terms of Service
           </NavLink>
         </Link>
-        <Link href="/faq" passHref>
-          <NavLink
-            variant="footer"
-            sx={{
-              pl: [2, 3],
-            }}
-          >
-            FAQ
-          </NavLink>
-        </Link>
       </Flex>
     </Container>
   );

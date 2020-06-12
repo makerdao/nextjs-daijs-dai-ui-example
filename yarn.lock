@@ -2708,9 +2708,9 @@
     write-file-atomic "^2.3.0"
 
 "@makerdao/currency@^0.9.5":
-  version "0.9.7"
-  resolved "https://registry.yarnpkg.com/@makerdao/currency/-/currency-0.9.7.tgz#7b7310cc4feb75ce78330116ae15dad2267040e0"
-  integrity sha512-7N4w25lYwJf105RJZk/WZpxzUMs3GOxSJ4Qg2yro7V1bnsEHaZ0IeyrFOtUfo87Ia3tvld+k9JLG6ykYOxI3kw==
+  version "0.9.9"
+  resolved "https://registry.yarnpkg.com/@makerdao/currency/-/currency-0.9.9.tgz#b5f847362cb4648c30548313f005c80c1c878c9e"
+  integrity sha512-fr6MaiWxQ1IxEaSO8znnhcZTPb8P5ZJU5PS76lx5zAX8CF/ZykfDCX7lb4AMaOVCWajQ8OPN8ekO5a0MOJb3wg==
   dependencies:
     babel-runtime "^6.26.0"
     bignumber.js "^8.1.1"
@@ -2724,6 +2724,13 @@
   version "0.0.24"
   resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.24.tgz#f216f76d8bf0eca724ba989c8a9e8e88b8b54787"
   integrity sha512-nc2YO40BQeutgyqaufkWglsN9VXXo1Fyf4iD5C4qjDW5oV3FAK2PGeOhQwuLtxU25sDvsO50dSWrRM5VCiQX/A==
+
+"@makerdao/dai-ui-theme-maker-neue@^0.0.47":
+  version "0.0.47"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker-neue/-/dai-ui-theme-maker-neue-0.0.47.tgz#4fff0ef19c09a12e1c317b134f68dba7b0061e4f"
+  integrity sha512-MgSNTN7+VtORbpxSbfEMFQGkfLRY9dyUM3SRAm/qYv1TBZnAVBUSxPvmhKEEtKYS/OQvBrNDsWNg1VEPQknWOg==
+  dependencies:
+    "@theme-ui/color" "^0.3.1"
 
 "@makerdao/dai-ui-theme-maker@^0.0.47":
   version "0.0.47"
