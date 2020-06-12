@@ -1,10 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import MakerProvider from '../providers/MakerProvider';
 import { ThemeProvider } from 'theme-ui';
+import Prism from '@theme-ui/prism';
+import MakerProvider from '../providers/MakerProvider';
 import theme from '../theme';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+
+const components = {
+  pre: ({ children }) => <>{children}</>,
+  code: Prism,
+};
 
 const MyApp = ({ Component, pageProps }) => {
   const { query } = useRouter();
@@ -16,7 +22,7 @@ const MyApp = ({ Component, pageProps }) => {
   }, [query.network]);
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={theme} components={components}>
       <MakerProvider network={network}>
         <Header query={queryParams} />
         <Component {...pageProps} />

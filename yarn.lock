@@ -2715,15 +2715,20 @@
     babel-runtime "^6.26.0"
     bignumber.js "^8.1.1"
 
+"@makerdao/dai-ui-icons-branding@^0.0.47":
+  version "0.0.47"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons-branding/-/dai-ui-icons-branding-0.0.47.tgz#b3d2d6f2bae4999dfafabb2374a3bbe56d84b515"
+  integrity sha512-poKpgbBIIeCqrYkU2g9rRIbFKIzR/ZUpms37VtOwEFMl8Avie45+/QeewPIvfbBQfUZriSoRtndgS71aPkNmjg==
+
 "@makerdao/dai-ui-icons@^0.0.24":
   version "0.0.24"
   resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-icons/-/dai-ui-icons-0.0.24.tgz#f216f76d8bf0eca724ba989c8a9e8e88b8b54787"
   integrity sha512-nc2YO40BQeutgyqaufkWglsN9VXXo1Fyf4iD5C4qjDW5oV3FAK2PGeOhQwuLtxU25sDvsO50dSWrRM5VCiQX/A==
 
-"@makerdao/dai-ui-theme-maker@^0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.24.tgz#971ade24389e396bf9d7e6923ed7392f379eac1c"
-  integrity sha512-W1GQKjMq72V4A4o1DcpccZ/4f1XukonfNdHBdAYvC/MqMAsEfa99nGGZuPRn/LtlJnB7oqG65VvjcJtvgZH6zQ==
+"@makerdao/dai-ui-theme-maker@^0.0.47":
+  version "0.0.47"
+  resolved "https://registry.yarnpkg.com/@makerdao/dai-ui-theme-maker/-/dai-ui-theme-maker-0.0.47.tgz#9885c3157491d84040a9d9e3a8967bbf1e411126"
+  integrity sha512-vuDhk06kG1P2rqC8CTzPGT9n4pfgAl3qTFIijLT1r7wmQLriMy7e2JVbgKwNfq2lmp/1FvTAs6K/zWXNCWN5mg==
   dependencies:
     "@theme-ui/color" "^0.3.1"
 
@@ -3233,6 +3238,13 @@
     "@emotion/core" "^10.0.0"
     "@emotion/styled" "^10.0.0"
     "@mdx-js/react" "^1.0.0"
+
+"@theme-ui/prism@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@theme-ui/prism/-/prism-0.3.0.tgz#69c2f8bf5f5c5d02f1bde5879a149f6cadab2b7c"
+  integrity sha512-5M3uH5zShttu5k84OfCIWrFKFTrPdck/m/1iU/9i8CMM899mIu7VsVTgaUTKkOCMoreH2u+d7Y76j4Ur2ZMzEw==
+  dependencies:
+    prism-react-renderer "^1.0.2"
 
 "@theme-ui/theme-provider@^0.3.1":
   version "0.3.1"
@@ -15474,6 +15486,11 @@ pretty-format@^26.0.1:
     ansi-regex "^5.0.0"
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
+
+prism-react-renderer@^1.0.2:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prism-react-renderer/-/prism-react-renderer-1.1.1.tgz#1c1be61b1eb9446a146ca7a50b7bcf36f2a70a44"
+  integrity sha512-MgMhSdHuHymNRqD6KM3eGS0PNqgK9q4QF5P0yoQQvpB6jNjeSAi3jcSAz0Sua/t9fa4xDOMar9HJbLa08gl9ug==
 
 private@^0.1.6, private@^0.1.8:
   version "0.1.8"

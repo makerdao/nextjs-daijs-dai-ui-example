@@ -15,10 +15,12 @@
   "dependencies": {
     "@makerdao/dai": "0.29.0",
     "@makerdao/dai-ui-icons": "^0.0.24",
-    "@makerdao/dai-ui-theme-maker": "^0.0.24",
+    "@makerdao/dai-ui-icons-branding": "^0.0.47",
+    "@makerdao/dai-ui-theme-maker": "^0.0.47",
     "@makerdao/testchain": "^1.1.5",
     "@mdx-js/loader": "^1.6.1",
     "@next/mdx": "^9.3.6",
+    "@theme-ui/prism": "^0.3.0",
     "bignumber.js": "^9.0.0",
     "ipfs": "^0.43.3",
     "jest-transformer-mdx": "^2.1.0",
