@@ -13,6 +13,7 @@
     "testchain": "./node_modules/@makerdao/testchain/scripts/launch -s default --fast"
   },
   "dependencies": {
+    "@makerdao/currency": "^0.9.9",
     "@makerdao/dai": "0.29.0",
     "@makerdao/dai-ui-icons": "^0.0.24",
     "@makerdao/dai-ui-icons-branding": "^0.0.47",
@@ -26,6 +27,7 @@
     "ipfs": "^0.43.3",
     "jest-transformer-mdx": "^2.1.0",
     "next": "^9.4.0",
+    "ramda": "^0.27.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "theme-ui": "^0.3.1"
