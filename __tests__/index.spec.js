@@ -8,7 +8,5 @@ nextRouter.useRouter.mockImplementation(() => ({ route: '/' }));
 
 test('basic rendering', async () => {
   render(<App />);
-  const [homeLink] = screen.getAllByRole('link');
-  expect(homeLink).toHaveTextContent('Home');
   expect(screen.getByRole('button')).toHaveTextContent('Connect Wallet');
 });

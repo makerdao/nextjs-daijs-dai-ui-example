@@ -44,9 +44,6 @@ const Header = ({ query }) => {
           </ThemeLink>
         </Link>
         <Flex sx={{ alignItems: 'center' }}>
-          <Flex>
-            <AccountConnect />
-          </Flex>
           <Flex
             as="nav"
             sx={{
@@ -70,8 +67,8 @@ const Header = ({ query }) => {
               href="https://github.com/makerdao/nextjs-daijs-dai-ui-example"
               target="_blank"
               sx={{
-                pr: 0,
-                pl: [0, 4],
+                pr: [0, 3],
+                pl: [0, 2],
               }}
             >
               GitHub
@@ -89,6 +86,9 @@ const Header = ({ query }) => {
             }}
             onClick={() => setOpened(!opened)}
           />
+          <Flex sx={{ order: [-1, 0] }}>
+            <AccountConnect />
+          </Flex>
         </Flex>
       </Flex>
     </Container>
