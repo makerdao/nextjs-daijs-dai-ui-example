@@ -31,21 +31,21 @@ const Index = () => {
   return (
     <Container>
       <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
-        <Heading>Dai Boilerplate</Heading>
+        <Heading variant="mediumHeading">Dai Boilerplate</Heading>
         <Card sx={{ py: 0, px: 3, my: 2 }}>
           <IntroMDX></IntroMDX>
         </Card>
         {web3Connected && (
           <Grid sx={{ my: 3 }}>
             <Card>
-              <Heading sx={{ pb: 2 }} variant="h3">
+              <Heading sx={{ pb: 2 }} variant="smallHeading">
                 Balances
               </Heading>
               <Text sx={{ fontFamily: 'monospace' }}>{ethBalance}</Text>
               <Text sx={{ fontFamily: 'monospace' }}>{mkrBalance}</Text>
             </Card>
             <Card>
-              <Heading sx={{ pb: 2 }} variant="h3">
+              <Heading sx={{ pb: 2 }} variant="smallHeading">
                 Proxy Address
               </Heading>
               {proxyAddress ? (
