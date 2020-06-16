@@ -15,6 +15,7 @@
   "dependencies": {
     "@makerdao/currency": "^0.9.9",
     "@makerdao/dai": "0.29.0",
+    "@makerdao/dai-plugin-governance": "^0.12.10",
     "@makerdao/dai-ui-icons": "^0.0.24",
     "@makerdao/dai-ui-icons-branding": "^0.0.47",
     "@makerdao/dai-ui-theme-maker": "^0.0.47",
