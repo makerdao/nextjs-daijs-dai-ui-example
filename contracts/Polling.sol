@@ -29,10 +29,6 @@ contract PollingEvents is BaseRelayRecipient {
 contract PollingEmitter is PollingEvents {
     uint256 public npoll;
 
-    function setTrustedForwarder(address _trustedForwarder) public {
-        trustedForwarder = _trustedForwarder;
-    }
-
     function createPoll(uint256 startDate, uint256 endDate, string calldata multiHash, string calldata url)
         external
     {
@@ -49,6 +45,10 @@ contract PollingEmitter is PollingEvents {
         );
         require(npoll < uint(-1), "polling-too-many-polls");
         npoll++;
+    }
+
+    function setTrustedForwarder(address _trustedForwarder) public {
+        trustedForwarder = _trustedForwarder;
     }
 
     function withdrawPoll(uint256 pollId)
