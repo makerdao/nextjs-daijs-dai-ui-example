@@ -1,15 +1,35 @@
 /** @jsx jsx */
 import { useState } from 'react';
+import React, { Fragment } from 'react';
 import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import useMaker from '../hooks/useMaker';
 import { useEffect } from 'react';
 import IntroMDX from '../text/intro.mdx';
+//import polls from '../_mock/topics'
+
+
+
+
 
 const Index = () => {
-  const { maker, fetchTokenBalance, web3Connected } = useMaker();
+  const { maker, fetchTokenBalance, web3Connected, getPollCreatedEvents } = useMaker();
+
+  const [setPollsData, pollsData] = useState(null);
   const [ethBalance, setEthBalance] = useState(null);
   const [mkrBalance, setMkrBalance] = useState(null);
   const [proxyAddress, setProxyAddress] = useState(null);
+
+  useEffect(() => {
+    console.log("here", web3Connected)
+    const fetchPolls = async () => {
+        const polls = await getPollCreatedEvents();
+        console.log("polls", polls)
+        setPollsData(polls.toString());
+    };
+     if (web3Connected) {
+        fetchPolls();
+     }
+}, [web3Connected, maker, getPollCreatedEvents]);
 
   useEffect(() => {
     const fetchBalances = async () => {
@@ -28,6 +48,7 @@ const Index = () => {
     }
   }, [web3Connected, maker, fetchTokenBalance]);
 
+
   return (
     <Container>
       <Box sx={{ mt: 2, ml: [0, 'auto'], mr: [null, 0] }}>
@@ -39,7 +60,6 @@ const Index = () => {
           <Grid sx={{ my: 3 }}>
             <Card>
               <Heading sx={{ pb: 2 }} variant="h3">
-                Balances
               </Heading>
               <Text sx={{ fontFamily: 'monospace' }}>{ethBalance}</Text>
               <Text sx={{ fontFamily: 'monospace' }}>{mkrBalance}</Text>

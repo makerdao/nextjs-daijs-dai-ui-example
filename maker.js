@@ -1,5 +1,5 @@
 import Maker from '@makerdao/dai';
-// import customPlugin from './plugin/index';
+import pollingPlugin from './plugin/index';
 
 let maker;
 
@@ -7,7 +7,7 @@ export async function instantiateMaker() {
   const config = {
     log: true,
     autoAuthenticate: false,
-    // plugins: [[customPlugin, { customOption: 'test' }]], // config options can be passed to your plugin like this
+    plugins: [[pollingPlugin]]
   };
 
   maker = await Maker.create('browser', config);
