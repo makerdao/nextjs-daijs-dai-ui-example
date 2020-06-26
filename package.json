@@ -9,6 +9,7 @@
     "build-ipfs": "IPFS=true next build",
     "export": "next export",
     "start": "next start",
+    "gsn-start": "gsn start",
     "test": "yarn testchain --ci jest --runInBand",
     "testchain": "./node_modules/@makerdao/testchain/scripts/launch -s default --fast"
   },
@@ -22,6 +23,7 @@
     "@makerdao/testchain": "^1.1.5",
     "@mdx-js/loader": "^1.6.1",
     "@next/mdx": "^9.3.6",
+    "@opengsn/gsn": "0.9.0",
     "@theme-ui/prism": "^0.3.0",
     "bignumber.js": "^9.0.0",
     "ipfs": "^0.43.3",
