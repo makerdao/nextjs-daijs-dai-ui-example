@@ -4,6 +4,7 @@ import { Container, jsx, Card, Heading, Text, Grid, Box, Flex } from 'theme-ui';
 import useMaker from '../hooks/useMaker';
 import { useEffect } from 'react';
 import IntroMDX from '../text/intro.mdx';
+import PollingList from '../components/PollingList';
 
 const Index = () => {
   const { maker, fetchTokenBalance, web3Connected } = useMaker();
@@ -35,6 +36,7 @@ const Index = () => {
         <Card sx={{ py: 0, px: 3, my: 2 }}>
           <IntroMDX></IntroMDX>
         </Card>
+        <PollingList />
         {web3Connected && (
           <Grid sx={{ my: 3 }}>
             <Card>
