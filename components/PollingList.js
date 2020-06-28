@@ -127,29 +127,31 @@ const PollingList = () => {
   let polls;
 
   useEffect(() => {
-    const symbolicVoting = maker.service('smartContract').getContract('SYMBOLIC_VOTING');
-    console.log(symbolicVoting);
-    const logs = ethers
-    // getDefaultProvider(<network_name>) for anything besides mainnet
-      .getDefaultProvider("kovan")
-      .getLogs({
-        ...symbolicVoting.filters.PollCreated(),
-        fromBlock: 0,
-        toBlock: 'latest'
-      });
+    if (maker) {
+      const symbolicVoting = maker.service('smartContract').getContract('SYMBOLIC_VOTING');
+      console.log(symbolicVoting);
+      const logs = ethers
+      // getDefaultProvider(<network_name>) for anything besides mainnet
+        .getDefaultProvider("kovan")
+        .getLogs({
+          ...symbolicVoting.filters.PollCreated(),
+          fromBlock: 0,
+          toBlock: 'latest'
+        });
 
-    polls = logs
-      .map(log => symbolicVoting.interface.parseLog(log))
-      .map(({ args: { creator, pollId, startDate, endDate, multiHash, url } }) => ({
-        creator,
-        pollId: pollId.toString(),
-        startDate: startDate.toString(),
-        endDate: endDate.toString(),
-        multiHash,
-        url
-      }));
-    
-    polls.sort((a, b) => b.startDate - a.startDate);
+      polls = logs
+        .map(log => symbolicVoting.interface.parseLog(log))
+        .map(({ args: { creator, pollId, startDate, endDate, multiHash, url } }) => ({
+          creator,
+          pollId: pollId.toString(),
+          startDate: startDate.toString(),
+          endDate: endDate.toString(),
+          multiHash,
+          url
+        }));
+      
+      polls.sort((a, b) => b.startDate - a.startDate);
+    }
   }, []);
 
   const START_TIME = new Date('6/26/2020 15:00 GMT').getTime();
@@ -167,26 +169,30 @@ const PollingList = () => {
       >
         Create Poll
       </StyledButton>
-      <RiseUp key={polls.toString()}>
-        {polls.map(poll => (
-          <div>
-            <div>
-              <ProposalDetails>
-                <SubHeading>{poll.title}</SubHeading>
-                <Body
-                  dangerouslySetInnerHTML={{
-                    __html: poll.summary
-                  }}
-                />
+      <RiseUp key={ polls ? polls.toString() : '...' }>
+        {
+          polls
+            ? polls.map(poll => (
+              <div>
                 <div>
-                  <Fragment>
-                      <StyledButton>Vote on Proposal</StyledButton>
-                  </Fragment>
+                  <ProposalDetails>
+                    <SubHeading>{poll.title}</SubHeading>
+                    <Body
+                      dangerouslySetInnerHTML={{
+                        __html: poll.summary
+                      }}
+                    />
+                    <div>
+                      <Fragment>
+                          <StyledButton>Vote on Proposal</StyledButton>
+                      </Fragment>
+                    </div>
+                  </ProposalDetails>
                 </div>
-              </ProposalDetails>
-            </div>
-          </div>
-        ))}
+              </div>
+            ))
+          : '...'
+        }
       </RiseUp>
     </Fragment>
   );

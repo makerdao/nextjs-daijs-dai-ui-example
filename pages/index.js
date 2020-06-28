@@ -36,10 +36,10 @@ const Index = () => {
         <Card sx={{ py: 0, px: 3, my: 2 }}>
           <IntroMDX></IntroMDX>
         </Card>
+        <PollingList />
         {web3Connected && (
           <Grid sx={{ my: 3 }}>
             <Card>
-              <PollingList />
               <Heading sx={{ pb: 2 }} variant="h3">
                 Balances
               </Heading>
