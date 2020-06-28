@@ -1,10 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { Button } from '@makerdao/ui-components-core';
 
 import theme from '../theme';
 // import { toSlug, eq, formatRound, add } from '../utils/misc';
 import { uuidv4 } from 'uuidv4';
+import useMaker from '../hooks/useMaker';
 const ethers = require('ethers');
 
 const riseUp = keyframes`
@@ -121,25 +122,23 @@ const Strong = styled(Black)`
 //   }
 // };
 
-const START_TIME = new Date('6/26/2020 15:00 GMT').getTime();
-const END_TIME = new Date('6/29/2020 15:00 GMT').getTime();
-const DOCUMENT_LINK = `https://raw.githubusercontent.com/makerdao/community/master/governance/polls/Base%20Rate%20Adjustment%20-%20May%2025%2C%202020.md`;
+const PollingList = () => {
+  const { maker } = useMaker();
+  let polls;
 
-const PollingList = ({
-  maker: maker
-}) => {
-  const symbolicVoting = maker.service('smartContract').getContract('SYMBOLIC_VOTING');
-  const logs = ethers
-  // getDefaultProvider(<network_name>) for anything besides mainnet
-    .getDefaultProvider("kovan")
-    .getLogs({
-      ...symbolicVoting.filters.PollCreated(),
-      fromBlock: 0,
-      toBlock: 'latest'
-    });
-    // need to integrate async/await for these calls,
-    // probably best in useEffect hook
-    const polls = logs
+  useEffect(() => {
+    const symbolicVoting = maker.service('smartContract').getContract('SYMBOLIC_VOTING');
+    console.log(symbolicVoting);
+    const logs = ethers
+    // getDefaultProvider(<network_name>) for anything besides mainnet
+      .getDefaultProvider("kovan")
+      .getLogs({
+        ...symbolicVoting.filters.PollCreated(),
+        fromBlock: 0,
+        toBlock: 'latest'
+      });
+
+    polls = logs
       .map(log => symbolicVoting.interface.parseLog(log))
       .map(({ args: { creator, pollId, startDate, endDate, multiHash, url } }) => ({
         creator,
@@ -149,12 +148,17 @@ const PollingList = ({
         multiHash,
         url
       }));
+    
+    polls.sort((a, b) => b.startDate - a.startDate);
+  }, []);
+
+  const START_TIME = new Date('6/26/2020 15:00 GMT').getTime();
+  const END_TIME = new Date('6/29/2020 15:00 GMT').getTime();
+  const DOCUMENT_LINK = `https://raw.githubusercontent.com/makerdao/community/master/governance/polls/Base%20Rate%20Adjustment%20-%20May%2025%2C%202020.md`;
 
   function createPoll() {
     symbolicVoting.createPoll(START_TIME, END_TIME, uuidv4(), DOCUMENT_LINK); // random id for the hash
   }
-
-  polls.sort((a, b) => b.startDate - a.startDate);
 
   return (
     <Fragment>

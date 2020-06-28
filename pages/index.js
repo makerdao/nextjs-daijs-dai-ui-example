@@ -39,7 +39,7 @@ const Index = () => {
         {web3Connected && (
           <Grid sx={{ my: 3 }}>
             <Card>
-              <PollingList maker={maker} />
+              <PollingList />
               <Heading sx={{ pb: 2 }} variant="h3">
                 Balances
               </Heading>
