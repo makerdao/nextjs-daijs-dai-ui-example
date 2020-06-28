@@ -8,6 +8,10 @@ import { uuidv4 } from 'uuidv4';
 import useMaker from '../hooks/useMaker';
 const ethers = require('ethers');
 
+// You may or may not want to get rid of the following styling
+// stuff, but I included it from the gov portal to minimize
+// the complexity in getting this component transplanted here
+
 const riseUp = keyframes`
 0% {
   opacity: 0;
@@ -57,79 +61,29 @@ const StyledButton = styled(Button)`
   right: 2%;
 `;
 
-const Content = styled.div`
-  display: flex;
-`;
-
-const proposalWrapperHeight = 200;
-
-const BannerLink = styled.a`
-  color: #ffffff;
-  text-decoration: underline;
-  font-weight: bold;
-`;
-
-
-const fadeIn = keyframes`
-0% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
-`;
-
-const FadeIn = styled.div`
-  animation: ${fadeIn} 0.75s forwards;
-`;
-const SmallMediumText = styled.p`
-  margin-top: 20px;
-  margin-bottom: 30px;
-  text-align: left;
-  line-height: 2;
-  font-size: 14px;
-  color: ${theme.text.dim_grey};
-`;
-const Black = styled.span`
-  color: ${theme.text.default};
-`;
-
-const Strong = styled(Black)`
-  color: ${theme.text.default};
-  font-weight: bold;
-`;
-
-// export const VotingWeightBanner = ({ accountsFetching, activeAccount }) => {
-//   if (accountsFetching || !activeAccount) return <Padding />;
-
-//   // mkr in wallet + mkr locked in chief (including mkr locked via a vote proxy)
-//   const pollVotingPower = add(
-//     activeAccount.proxy.votingPower,
-//     activeAccount.mkrBalance
-//   );
-
-//   if (activeAccount.hasProxy) {
-//     return <VoterStatus />;
-//   } else {
-//     return (
-//       <FadeIn>
-//         <SmallMediumText>
-//           <Strong>Connected wallet: </Strong>
-//           <Black>{formatRound(pollVotingPower, 4)} MKR</Black>{' '}
-//         </SmallMediumText>
-//       </FadeIn>
-//     );
-//   }
-// };
-
 const PollingList = () => {
   const { maker } = useMaker();
-  let polls;
+  let polls, symbolicVoting;
+  const START_TIME = new Date('6/26/2020 15:00 GMT').getTime();
+  const END_TIME = new Date('6/29/2020 15:00 GMT').getTime();
+  const DOCUMENT_LINK = `https://raw.githubusercontent.com/makerdao/community/master/governance/polls/Base%20Rate%20Adjustment%20-%20May%2025%2C%202020.md`;
 
+  // You may be better off using the SDK function here
+  function createPoll() {
+    symbolicVoting.createPoll(START_TIME, END_TIME, uuidv4(), DOCUMENT_LINK); // random id for the hash
+  }
+  
   useEffect(() => {
     if (maker) {
-      const symbolicVoting = maker.service('smartContract').getContract('SYMBOLIC_VOTING');
+      symbolicVoting = maker.service('smartContract').getContract('POLLING');
       console.log(symbolicVoting);
+      const pollingService = maker.service('govPolling');
+
+      // The following functions do not actually work yet, but
+      // this bit may help with Ian's WIP stuff trying to do the same thing.
+      // Also see the following functionality in the pollingService:
+      // https://github.com/makerdao/dai.js/blob/b270a3fb119d84a1f96c2dd45608343666bbbd78/packages/dai-plugin-governance/src/GovPollingService.js#L48
+
       const logs = ethers
       // getDefaultProvider(<network_name>) for anything besides mainnet
         .getDefaultProvider("kovan")
@@ -153,14 +107,6 @@ const PollingList = () => {
       polls.sort((a, b) => b.startDate - a.startDate);
     }
   }, []);
-
-  const START_TIME = new Date('6/26/2020 15:00 GMT').getTime();
-  const END_TIME = new Date('6/29/2020 15:00 GMT').getTime();
-  const DOCUMENT_LINK = `https://raw.githubusercontent.com/makerdao/community/master/governance/polls/Base%20Rate%20Adjustment%20-%20May%2025%2C%202020.md`;
-
-  function createPoll() {
-    symbolicVoting.createPoll(START_TIME, END_TIME, uuidv4(), DOCUMENT_LINK); // random id for the hash
-  }
 
   return (
     <Fragment>
