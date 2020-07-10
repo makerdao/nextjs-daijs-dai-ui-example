@@ -8,6 +8,7 @@ import AccountConnect from './AccountConnect';
 const LINKS = [
   { url: '/', name: 'Home' },
   { url: '/about', name: 'About' },
+  { url: '/hackathon', name: 'Hackathon' },
 ];
 
 const NavLinks = ({ setOpened, query }) =>
