@@ -13,6 +13,44 @@ const theme = {
   layout: {
     container: { ...makerTheme.layout.container, pt: 2 },
   },
+
+  links: {
+    ...makerTheme.links,
+    sidebar: {
+      variant: 'links.nav',
+      fontSize: 1,
+    },
+  },
+  styles: {
+    ...makerTheme.styles,
+    fakeLi: {
+      listStyle: 'none',
+    },
+
+    h1: {
+      ...makerTheme.styles.h1,
+      mt: 4,
+    },
+
+    a: {
+      color: 'primary',
+      textDecoration: 'none',
+      '&:hover': {
+        color: 'primaryEmphasis',
+      },
+    },
+    ul: {
+      pl: 4,
+    },
+    // applies to single-backticks
+    inlineCode: {
+      fontFamily: 'monospace',
+      fontSize: 3,
+      bg: 'primaryMuted',
+      color: 'primaryAlt',
+      px: 1,
+    },
+  },
 };
 
 export default theme;
